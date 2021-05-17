@@ -1,0 +1,13 @@
+.wrap{
+     display: flex;
+
+ }
+.person-box{
+    border-collapse: collapse;
+    border: 2px solid grey;
+    background: #bcdbc1;
+}
+.th {
+    width: 30%;
+    border: 2px solid grey;
+}
