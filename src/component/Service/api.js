@@ -4,12 +4,15 @@ const options = {
     baseURL: 'https://api.sampleapis.com/futurama'
 };
 let axiosInstance = axios.create(options);
+const getCharacterDetail = (id) => {
+    return axiosInstance.get('/characters/' + id); //promise
+};
 const getInventory = () => {
     return axiosInstance.get('/inventory');
 };
 
-const getInventoryInfo = (id) => {
+const getInventoryDetails = (id) => {
     return axiosInstance.get('/inventory/' + id);
 };
 
-export { getInventory, getInventoryInfo,axiosInstance};
+export { getCharacterDetail,getInventory, getInventoryDetails};

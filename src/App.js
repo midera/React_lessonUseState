@@ -1,37 +1,36 @@
 import Characters from "./component/Person/Characters";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
 } from 'react-router-dom'
-import CharactersDetails from "./component/Person/CharactersDetails";
 import Inventory from "./component/Inventory/Inventory";
+import CharactersDetails from "./component/Person/CharactersDetails";
+
+
 
 function App() {
-  return (
-      <Router>
-    <div >
-      <div><Link to={'/characters'}>Person</Link></div>
-      <div><Link to={'/inventory'}>Inventory</Link></div>
-     <Switch>
-<Route exact={true} path= {'/characters'} render={(props)=>{
+    return (
+        <Router>
+            <div className="App">
 
-  return <Characters{...props}/>
-}}/>
-         <Route exact={true} patch={'/characters/:id'} render={
-             (props)=>{
-                 let {match:{params:{id}}} = props;
-                 return <CharactersDetails charactersID={id} />}
-         }/>
+                <div><Link to={'/characters'}> Characters</Link></div>
+                <div><Link to={'/inventory'}> Inventory</Link></div>
 
-         <Route path={'/inventory'} render={(props) => <Inventory {...props}/>}/>
+                <Switch>
 
-     </Switch>
-
-    </div>
-      </Router>
-  );
+                    <Route path={'/inventory'} render={(props) => <Inventory {...props}/>}/>
+                    <Route exact path={'/characters'} render={(props) => <Characters {...props}/>}/>
+                    <Route exact path={'/characters/:id'} render={(props) => {
+                        let {match: {params: {id}}} = props;
+                        return <CharactersDetails characterId={id}
+                        />
+                    }}/>
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
